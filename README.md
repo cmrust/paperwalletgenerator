@@ -1,6 +1,3 @@
-paperwalletgenerator
-====================
-
 # Paper Wallet Generator
 This is an open-source client-side interactive web page for generating QRCode's onto a paper wallet.
 
