@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="enUS" lang="enUS">
+<head>
+<title>Bitcoin Paper Wallet Generator</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="qrcode.min.js"></script>
+</head>
+<body>
+<div id="body" style="width:700px;">
+	<div style="width:100%; text-align:center;">
+		<h2>Bitcoin Paper Wallet Generator</h2>
+	</div>
+	<div style="width:90%; margin-left:auto; margin-right:auto;">
+		<p>Front and back: <input id="checkbox" type="checkbox" onchange="swapImage();" checked /></p>
+	</div>
+	<div style="width:50%; float:left; text-align:center;">
+		<input id="privatekey" type="text" placeholder="Private Key" style="width:90%; margin: 0 auto;" />
+	</div>
+	<div style="width:50%; float:right; text-align:center;">
+		<input id="publickey" type="text" placeholder="Public Key" style="width:90%; margin: 0 auto;" />
+	</div>
+	<br />
+	<div id="wallet" style="width:700px; height:700px; margin-top:15px;">
+		<img id="walletimage" style="position:absolute; z-index:1;" src="wallet.jpg" />
+		<div id="qrcode" style="position:absolute; z-index:3; width:99px; height:99px; padding-left:64px; padding-top:97px;" />
+		<div id="qrcode2" style="position:absolute; z-index:3; width:79px; height:79px; padding-left:513px; padding-top:111px;" />
+	</div>
+</div>
+<script type="text/javascript">
+
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 99,
+	height : 99
+});
+
+var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
+	width : 79,
+	height : 79
+});
+
+function drawCode () {
+	var privatekey = document.getElementById("privatekey").value;
+	qrcode.makeCode(privatekey);
+	var publickey = document.getElementById("publickey").value;
+	qrcode2.makeCode(publickey);
+}
+
+var walletimage = document.getElementById("walletimage");
+
+function swapImage(){
+	if(document.getElementById("checkbox").checked){
+		walletimage.src="wallet.jpg";
+	} else {
+		walletimage.src="wallet-front.jpg";
+	}
+}
+
+drawCode();
+
+$("#privatekey").
+	on("keyup", function (e) {
+		drawCode();
+	});
+
+$("#publickey").
+	on("keyup", function (e) {
+		drawCode()
+	});
+</script>
+</body>
