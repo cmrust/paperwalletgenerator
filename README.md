@@ -13,6 +13,9 @@ This is built off of an image created by bitcoin talk user 75RTUGA and the open-
 	jQuery: 
 	http://jquery.com
 
+## Browser Compatibility
+IE6-10, Chrome, Firefox, Safari, Android, iOS, Windows Mobile, etc.
+
 ## License
 MIT License
 
