@@ -16,19 +16,22 @@
 		<p>Front and back: <input id="checkbox" type="checkbox" onchange="swapImage();" checked /></p>
 	</div>
 	<div style="width:50%; float:left; text-align:center;">
-		<input id="privatekey" type="text" placeholder="Private Key" style="width:90%; margin: 0 auto;" />
+		<input id="bitcoinaddress" type="text" placeholder="Bitcoin Address" style="width:90%; margin: 0 auto;" />
 	</div>
 	<div style="width:50%; float:right; text-align:center;">
-		<input id="publickey" type="text" placeholder="Public Key" style="width:90%; margin: 0 auto;" />
+		<input id="privatekey" type="text" placeholder="Private Key" style="width:90%; margin: 0 auto;" />
 	</div>
 	<br />
-	<div id="wallet" style="width:700px; height:700px; margin-top:15px;">
+	<div id="wallet" style="width:700px; height:700px; margin-top:15px; overflow:hidden;">
 		<img id="walletimage" style="position:absolute; z-index:1;" src="wallet.jpg" />
+		<p id="addresstext" style="position:absolute; z-index:2; padding-left:150px; padding-top:18px; font-family:Courier; font-size:14px; color:#464644;">173Pw9aJUwhV77vtLwSDTzkWqbV7cfP6RE</p>
 		<div id="qrcode" style="position:absolute; z-index:3; width:99px; height:99px; padding-left:64px; padding-top:97px;" />
 		<div id="qrcode2" style="position:absolute; z-index:3; width:79px; height:79px; padding-left:513px; padding-top:111px;" />
 	</div>
 </div>
 <script type="text/javascript">
+
+var walletimage = document.getElementById("walletimage");
 
 var qrcode = new QRCode(document.getElementById("qrcode"), {
 	width : 99,
@@ -40,15 +43,6 @@ var qrcode2 = new QRCode(document.getElementById("qrcode2"), {
 	height : 79
 });
 
-function drawCode () {
-	var privatekey = document.getElementById("privatekey").value;
-	qrcode.makeCode(privatekey);
-	var publickey = document.getElementById("publickey").value;
-	qrcode2.makeCode(publickey);
-}
-
-var walletimage = document.getElementById("walletimage");
-
 function swapImage(){
 	if(document.getElementById("checkbox").checked){
 		walletimage.src="wallet.jpg";
@@ -57,16 +51,34 @@ function swapImage(){
 	}
 }
 
-drawCode();
+function drawCode () {
+	var bitcoinaddress = document.getElementById("bitcoinaddress").value;
+	qrcode.makeCode(bitcoinaddress);
+	document.getElementById("addresstext").innerHTML = bitcoinaddress;
+}
+
+function drawCode2 () {
+	var privatekey = document.getElementById("privatekey").value;
+	qrcode2.makeCode(privatekey);
+}
+
+function updateText () {
+	var bitcoinaddress = document.getElementById("bitcoinaddress").value;
+	
+}
+
+qrcode.makeCode("173Pw9aJUwhV77vtLwSDTzkWqbV7cfP6RE");
+qrcode2.makeCode("github.com/raptastics");
+
+$("#bitcoinaddress").
+	on("keyup", function (e) {
+		drawCode();
+		//updateText();
+	});
 
 $("#privatekey").
 	on("keyup", function (e) {
-		drawCode();
-	});
-
-$("#publickey").
-	on("keyup", function (e) {
-		drawCode()
+		drawCode2()
 	});
 </script>
 </body>
