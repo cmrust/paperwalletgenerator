@@ -1,10 +1,10 @@
 # Paper Wallet Generator
-This is an open-source client-side web page written in Javascript for generating QRCode's offline onto a Bitcoin paper wallet.
+This web page, written in Javascript, is for generating QRCode's onto a Bitcoin paper wallet. This project is open-source and runs client-side so you can use it offline.
 
-This is built off of an image created by bitcoin talk user 75RTUGA and the open-source QRCode.js javascript library.
+This is built off of wallet art created by bitcoin talk user 75RTUGA and the open-source QRCode.js javascript library.
 
 ## To Use
-Download the build, unzip it and open index.html in your web browser.
+Download it, unzip it and open index.html in your web browser.
 
 ## Sources
 	Paper wallet image design:
