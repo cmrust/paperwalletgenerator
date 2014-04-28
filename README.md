@@ -7,17 +7,14 @@ This is built off of wallet art created by bitcoin talk user 75RTUGA and the ope
 Download it, unzip it and open index.html in your web browser.
 
 ## Sources
-	Paper wallet image design:
-	75RTUGA - design@pmakordeoneditora.pt - https://github.com/openpaperwallet/openpaperwallet
+    Paper wallet image design:
+    75RTUGA - design@pmakordeoneditora.pt - https://github.com/openpaperwallet/openpaperwallet
 
-	QRCode.js library:
-	davidshimjs - twitter @davidshimjs - https://github.com/davidshimjs/qrcodejs
+    QRCode.js library:
+    davidshimjs - twitter @davidshimjs - https://github.com/davidshimjs/qrcodejs
 
-	jQuery: 
-	http://jquery.com
-
-## Browser Compatibility
-IE6-10, Chrome, Firefox, Safari, Android, iOS, Windows Phone, etc.
+    jQuery: 
+    http://jquery.com
 
 ## License
 MIT License
